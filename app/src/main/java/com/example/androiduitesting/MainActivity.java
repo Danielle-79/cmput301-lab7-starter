@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.content.Intent;
 
 import java.util.ArrayList;
 
@@ -63,6 +64,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 cityAdapter.clear();
             }
+        });
+        cityList.setOnItemClickListener((parent, view, position, id) -> {
+
+            String selectedCity = (String) parent.getItemAtPosition(position);
+
+            Intent intent = new Intent(MainActivity.this, ShowActivity.class);
+            intent.putExtra("city_name", selectedCity);
+
+            startActivity(intent);
         });
     }
 }
